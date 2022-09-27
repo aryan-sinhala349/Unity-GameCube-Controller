@@ -152,25 +152,25 @@ namespace Nfysoft.GamecubeControllerSupport
         {
             //if all the bytes of a port equal 0, it means theres no controller plugged into that port.
 
-            if (data.Where((_, i) => i is > 1 and < 10).Any(b => b != 0))
+            if (data.Where((_, i) => i > 1 && i < 10).Any(b => b != 0))
             {
                 _ports[0] ??= (GamecubeControllerDevice) InputSystem.AddDevice(ControllerDescription());
                 InputSystem.QueueStateEvent(_ports[0], CreateControllerState(0, data));
             }
 
-            if (data.Where((_, i) => i is > 9 and < 19).Any(b => b != 0))
+            if (data.Where((_, i) => i > 9 && i < 19).Any(b => b != 0))
             {
                 _ports[1] ??= (GamecubeControllerDevice) InputSystem.AddDevice(ControllerDescription());
                 InputSystem.QueueStateEvent(_ports[1], CreateControllerState(1, data));
             }
 
-            if (data.Where((_, i) => i is > 18 and < 28).Any(b => b != 0))
+            if (data.Where((_, i) => i > 18 && i < 28).Any(b => b != 0))
             {
                 _ports[2] ??= (GamecubeControllerDevice) InputSystem.AddDevice(ControllerDescription());
                 InputSystem.QueueStateEvent(_ports[2], CreateControllerState(2, data));
             }
 
-            if (data.Where((_, i) => i is > 27 and < 37).Any(b => b != 0))
+            if (data.Where((_, i) => i > 27 && i < 37).Any(b => b != 0))
             {
                 _ports[3] ??= (GamecubeControllerDevice) InputSystem.AddDevice(ControllerDescription());
                 InputSystem.QueueStateEvent(_ports[3], CreateControllerState(3, data));
